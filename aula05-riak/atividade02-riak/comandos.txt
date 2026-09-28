@@ -1,0 +1,37 @@
+ATIVIDADE 2 - RIAK - COMANDOS USADOS (PowerShell)
+
+=== Subindo o Riak no Docker ===
+docker run -d --name riak -p 8087:8087 -p 8098:8098 basho/riak-kv
+curl.exe http://localhost:8098/ping
+
+=== ETAPA 1: Inserindo os objetos ===
+curl.exe -XPUT -d "35" http://localhost:8098/types/default/buckets/professores/keys/Thyago
+curl.exe -XPUT -d "28" http://localhost:8098/types/default/buckets/professores/keys/Afonso
+curl.exe -XPUT -d "32" http://localhost:8098/types/default/buckets/alunos/keys/Fernanda
+curl.exe -XPUT -d "12" http://localhost:8098/types/default/buckets/alunos/keys/Theo
+curl.exe -XPUT -d "20" http://localhost:8098/types/default/buckets/funcionarios/keys/Sophia
+curl.exe -XPUT -d "15" http://localhost:8098/types/default/buckets/funcionarios/keys/Leonardo
+
+Listando as chaves de cada bucket:
+curl.exe "http://localhost:8098/types/default/buckets/professores/keys?keys=true"
+curl.exe "http://localhost:8098/types/default/buckets/alunos/keys?keys=true"
+curl.exe "http://localhost:8098/types/default/buckets/funcionarios/keys?keys=true"
+
+=== ETAPA 2 ===
+1) Mudando a idade do Theo para 25
+curl.exe -XPUT -d "25" http://localhost:8098/types/default/buckets/alunos/keys/Theo
+
+2) Passando o Leonardo de funcionarios para professores
+curl.exe -XPUT -d "15" http://localhost:8098/types/default/buckets/professores/keys/Leonardo
+curl.exe -XDELETE http://localhost:8098/types/default/buckets/funcionarios/keys/Leonardo
+
+3) Apagando o Afonso
+curl.exe -XDELETE http://localhost:8098/types/default/buckets/professores/keys/Afonso
+
+4) Mostrando a idade nova do Theo
+curl.exe http://localhost:8098/types/default/buckets/alunos/keys/Theo
+
+5) Listando as chaves de cada bucket
+curl.exe "http://localhost:8098/types/default/buckets/professores/keys?keys=true"
+curl.exe "http://localhost:8098/types/default/buckets/alunos/keys?keys=true"
+curl.exe "http://localhost:8098/types/default/buckets/funcionarios/keys?keys=true"

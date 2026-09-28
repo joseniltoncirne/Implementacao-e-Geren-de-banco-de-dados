@@ -6,7 +6,7 @@ Autor: **Josenilton Cirne Ramalho Neto**
 
 ## Trabalhos
 
-Os trabalhos estão separados em três pastas: **individuais**, **em-grupo** (o Desafio GeoLog, que o enunciado pede em grupo, foi feito individualmente, como explicado no relatório) e **aula05-redis** (a Lista 01 de Redis).
+Os trabalhos estão separados em quatro pastas: **individuais**, **em-grupo** (o Desafio GeoLog, que o enunciado pede em grupo, foi feito individualmente, como explicado no relatório), **aula05-redis** (a Lista 01 de Redis) e **aula05-riak** (a Atividade 2 de Riak).
 
 
 | Pasta | Trabalho | O que faz | Tecnologias |
@@ -19,12 +19,13 @@ Os trabalhos estão separados em três pastas: **individuais**, **em-grupo** (o 
 | [individuais/pratica05-poliglota](individuais/pratica05-poliglota) | Prática 05 | A mesma página, salvando resumos de desempenho num segundo banco | Streamlit, MongoDB, SQLite |
 | [em-grupo/desafio-geolog](em-grupo/desafio-geolog) | Desafio GeoLog | Monitoramento de caminhões com mapa, busca por raio e painel | Streamlit, Folium, Plotly, MongoDB, SQLite |
 | [aula05-redis/lista01-redis](aula05-redis/lista01-redis) | Lista 01 (Redis) | 20 exercícios com os tipos do Redis: textos, objetos, filas, conjuntos, ranking, mensagens e transações | Redis (Memurai), redis-cli, Python |
+| [aula05-riak/atividade02-riak](aula05-riak/atividade02-riak) | Atividade 2 (Riak) | Insere, atualiza, move e apaga objetos em buckets pela API HTTP | Riak KV, Docker, curl |
 
 Cada pasta tem o código, o `requirements.txt`, os prints e o PDF entregue.
 
 ## Como rodar
 
-Pré-requisitos: **Python 3** e **MongoDB** rodando em `mongodb://localhost:27017` (e o **Redis/Memurai** em `localhost:6379` para a Lista 01).
+Pré-requisitos: **Python 3** e **MongoDB** rodando em `mongodb://localhost:27017` (o **Redis/Memurai** em `localhost:6379` para a Lista 01 e o **Riak** no Docker, em `localhost:8098`, para a Atividade 2).
 
 ```bash
 cd individuais/nome-da-pasta      # ou em-grupo/desafio-geolog, ou aula05-redis/lista01-redis
