@@ -1,0 +1,52 @@
+LISTA 01 - REDIS - COMANDOS USADOS (memurai-cli / redis-cli)
+
+--- Bloco 1: Strings ---
+SET sistema:nome "DataPlatform"
+GET sistema:nome
+MSET env:db "postgres" env:cache "redis" env:queue "rabbitmq"
+MGET env:db env:cache
+SETEX sessao:usuario:101 30 "xyz123"
+TTL sessao:usuario:101
+INCR pageviews:home
+INCRBY pageviews:home 5
+DECRBY pageviews:home 2
+
+--- Bloco 2: Hashes ---
+HSET usuario:201 nome "Carlos" email "carlos@email.com" nivel "admin"
+HGET usuario:201 email
+HGETALL usuario:201
+HINCRBY usuario:201 tentativas_login 1
+HKEYS usuario:201
+
+--- Bloco 3: Lists ---
+RPUSH fila:email "email_1" "email_2" "email_3"
+LPOP fila:email
+LRANGE fila:email 0 -1
+
+--- Bloco 4: Sets ---
+SADD tags:post:1 "dados" "redis" "nosql" "redis"
+SCARD tags:post:1
+SADD tags:post:2 "redis" "python" "backend"
+SINTER tags:post:1 tags:post:2
+SISMEMBER tags:post:1 "python"
+
+--- Bloco 5: Sorted Sets ---
+ZADD placar:game 1500 "alice" 2200 "bob" 1800 "carol"
+ZREVRANGE placar:game 0 -1 WITHSCORES
+ZINCRBY placar:game 800 "alice"
+ZREVRANK placar:game "alice"
+
+--- Bloco 6: Pub/Sub, Transações e Administração ---
+SUBSCRIBE notificacoes                              (janela 1)
+PUBLISH notificacoes "Novo relatorio disponivel"    (janela 2)
+SET conta:A 100
+SET conta:B 50
+MULTI
+DECRBY conta:A 50
+INCRBY conta:B 50
+EXEC
+EXISTS sistema:nome
+RENAME sistema:nome sistema:app
+DEL sistema:app
+INFO memory
+FLUSHDB

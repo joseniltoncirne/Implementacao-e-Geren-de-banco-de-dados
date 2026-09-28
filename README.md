@@ -15,12 +15,13 @@ Autor: **Josenilton Cirne Ramalho Neto**
 | [pratica04-streamlit](pratica04-streamlit) | Prática 04 | Página web para explorar as voltas da F1 com gráficos | Streamlit, Plotly, MongoDB |
 | [pratica05-poliglota](pratica05-poliglota) | Prática 05 | A mesma página, salvando resumos de desempenho num segundo banco | Streamlit, MongoDB, SQLite |
 | [desafio-geolog](desafio-geolog) | Desafio GeoLog | Monitoramento de caminhões com mapa, busca por raio e painel | Streamlit, Folium, Plotly, MongoDB, SQLite |
+| [lista01-redis](lista01-redis) | Lista 01 (Redis) | 20 exercícios com os tipos do Redis: textos, objetos, filas, conjuntos, ranking, mensagens e transações | Redis (Memurai), redis-cli, Python |
 
 Cada pasta tem o código, o `requirements.txt`, os prints e o PDF entregue.
 
 ## Como rodar
 
-Pré-requisitos: **Python 3** e **MongoDB** rodando em `mongodb://localhost:27017`.
+Pré-requisitos: **Python 3** e **MongoDB** rodando em `mongodb://localhost:27017` (e o **Redis/Memurai** em `localhost:6379` para a Lista 01).
 
 ```bash
 cd nome-da-pasta
