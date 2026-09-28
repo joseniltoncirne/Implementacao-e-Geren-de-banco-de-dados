@@ -1,0 +1,39 @@
+ATIVIDADE 1 - MONGODB - COMANDOS USADOS
+
+=== ETAPA 1: Importando os dados ===
+(Importado pelo MongoDB Compass: banco atividade1, coleção restaurants, arquivo restaurantes.json)
+Pelo terminal, o comando equivalente seria:
+mongoimport --db atividade1 --collection restaurants --file restaurantes.json
+
+Conferindo no mongosh:
+use atividade1
+db.restaurants.countDocuments()
+
+=== ETAPA 2: Adicionando um restaurante novo ===
+db.restaurants.insertOne({ "address": { "street": "2 Avenue", "zipcode": "10075", "building": "1480", "coord": [-73.9557413, 40.7720266] }, "borough": "Manhattan", "cuisine": "Italian", "grades": [ { "date": ISODate("2014-10-01T00:00:00Z"), "grade": "A", "score": 11 }, { "date": ISODate("2014-01-16T00:00:00Z"), "grade": "B", "score": 17 } ], "name": "Vella", "restaurant_id": "41704620" })
+
+=== ETAPA 3: Fazendo buscas ===
+a) Mostrar todos os restaurantes
+db.restaurants.find()
+
+b) Restaurantes de Manhattan
+db.restaurants.find({ "borough": "Manhattan" })
+
+c) Restaurantes com CEP 10022
+db.restaurants.find({ "address.zipcode": "10022" })
+
+d) Restaurantes que já tiraram nota B
+db.restaurants.find({ "grades.grade": "B" })
+
+=== ETAPA 4: Buscas com filtros ===
+a) Restaurantes com pontuação acima de 30
+db.restaurants.find({ "grades.score": { "$gt": 30 } })
+
+b) Restaurantes com pontuação abaixo de 10
+db.restaurants.find({ "grades.score": { "$lt": 10 } })
+
+c) Restaurantes italianos que ficam no CEP 10075
+db.restaurants.find({ "$and": [ { "cuisine": "Italian" }, { "address.zipcode": "10075" } ] })
+
+d) Restaurantes italianos ou que ficam no CEP 10075
+db.restaurants.find({ "$or": [ { "cuisine": "Italian" }, { "address.zipcode": "10075" } ] })
